@@ -19,6 +19,11 @@ fn main() {
 
     let args = Args::parse();
     
+    // Ensure no other disrupting keys are pressed
+    for key in [Key::Alt, Key::Meta, Key::Shift, Key::C] {
+        keyman.key(key, Release).unwrap();
+    }
+
     // Copy
     keyman.key(Key::Control, Press).unwrap();
     keyman.key(Key::C, Click).unwrap();
